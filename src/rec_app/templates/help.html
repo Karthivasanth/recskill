@@ -1,0 +1,134 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+   <meta name="viewport" content="width=device-width,height=device-height, initial-scale=1"> 
+    <head>
+        <title>
+            Help & Support
+        </title>
+         <!--CSS-->
+         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+         <!--JS/JQ-->
+         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+        <style>
+          #droplist {
+                background-color: lightblue;
+            }
+            body {
+                background-color: lightblue;
+            }
+            .appn:hover{
+                    transform: scale(1.1);
+                    box-shadow: 5px 5px 6px solid rgba(0,0,0,0.7);
+                    transition: 1s ease-in-out;
+                }
+
+            * {
+  box-sizing: border-box;
+}
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid rgb(133, 180, 219);
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input[type=submit] {
+  background-color:rgb(62, 216, 62);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color:rgb(21, 155, 21);
+}
+.container {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: medium;
+  border-radius: 5px;
+  background-color: lightblue;
+  width: 100%;
+  padding: 10px;
+}
+.column {
+  float: left;
+  width: 50%;
+  margin-top: 6px;
+  padding: 50px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+@media screen and (max-width: 600px) {
+  .column, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+.navbar{
+                background-color: #449ce9;
+            }
+        </style>
+         <script src="https://kit.fontawesome.com/77473c82a7.js" crossorigin="anonymous"></script>
+    </head>
+ <body>
+          <!--nav-->
+          <nav class="navbar navbar-expand-lg navbar-dark " >
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                    
+                <a class="nav-link" href="{% url 'compdash' %}" style="color: black"><div class="appn"><img class ="sample" src="{% static 'b5adcd1e-e5fa-4fcd-aaea-3c145322174f_200x200_2.png' %}" width="70" height="30"></div></a>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'compdash' %}" style="color: white;" > Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'createjob' %}" style="color: white;" >Create Job</a>
+                </li>
+                <a class="nav-link" href="{% url 'compnot' %}" style="color: white;">Created Jobs</a>
+                <a class="nav-link" href="{% url 'recruit' %}" style="color: white;" >Recurit</a>
+                <a class="nav-link" href="{% url 'usersettings' %}" style="color: white;">Settings</a>
+                <a class="nav-link" href="{% url 'help&support' %}" style="color: white;"> Help</a>  
+              </ul>
+              <a class="nav-link" href="/" style="color: white;"><i class="fas fa-sign-out-alt"></i></a>
+        </div>
+        </nav>
+        <!--help-->
+  <div class="container">
+    <div style="text-align:center">
+      <h1>Contact Us</h1>
+      <p >Do you have any issues or queries? Please do not hesitate to contact us directly. Our team will come back to you within a matter of hours to help you.</p>
+    </div>
+    <div class="row">
+      <div class="column">
+        <img src="{% static '19zyJ82YDUw4XLSjpgXJLcw.png' %}" style="width:100%">
+      </div>
+      <div class="column">
+        <form action="{% url 'help&support' %}" style="font-size: medium; padding-top: 0px;" method="POST">
+          {% csrf_token %}
+          <label for="fname">Company Name</label>
+          <input type="text" id="fname" name="user" placeholder="Your company name..">
+          <label for="fname">Title</label>
+          <input type="text" id="fname" name="title" placeholder="Title of the issue">
+          <label for="subject">Description</label>
+          <textarea id="subject" name="desc" placeholder="Explain your issue in brief" style="height:170px"></textarea>
+          <input type="submit" value="Submit">
+        </form>
+      </div>
+    </div>
+  </div>
+ </body>
+</html>

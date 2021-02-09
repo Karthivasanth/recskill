@@ -1,0 +1,272 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,height=device-height">
+        <title>Userdetails</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        <script src="https://kit.fontawesome.com/f52e354d3a.js" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+        <style>
+            #droplist {
+                background-color: rgb(255, 255, 255);
+            }
+            #mainsearch:hover 
+            {
+                background-color: darkblue;
+                color: white;
+            }
+            #mainsearch{
+                background-color: rgb(255, 255, 255);
+                 color: rgb(5, 155, 255);
+            }
+            #mainsearchbox{
+                background-color: rgb(255, 255, 255);
+                color: rgb(51, 51, 51);
+            }
+            nav{
+                padding: none;
+            }
+            .nav-link:hover{
+                transform: scale(1.1);
+                box-shadow: 5px 5px 6px solid rgba(0,0,0,0.7);
+                color: black;
+                transition: .5s ease-in-out;
+                }
+                .navbar-nav .nav-item:hover .nav-link {
+                       color: rgb(2, 2, 2);
+                    }
+            .navbar-brand > img:hover{
+                    transform: scale(1.2);
+                    box-shadow: 5px 5px 6px solid rgba(0,0,0,0.7);
+                    transition: .5s ease-in-out;
+             }
+             [type="checkbox"]:not(:checked) + label,
+             [type="checkbox"]:checked + label {  
+              position: relative;
+             overflow: hidden;
+             cursor: pointer;
+            display: inline;
+            height: 15px;
+            line-height: 15px;
+            margin-right: 3px;
+            font-size: 15px;
+}
+
+.btn{
+    border-radius: 15px;
+}
+.card{
+    width: 85%;
+    border-radius: 15px;
+    background-color: rgb(236, 236, 236);
+}
+.form-group{
+    text-align: left;
+}
+body{
+    overflow-x: hidden;
+}
+@media screen and (max-width: 767px){
+.card{
+    width: 100%;
+}
+.row{
+    margin-right: None;
+    max-width: 100% !important;
+}
+.col{
+    flex-basis: auto;
+    max-width: 95% !important;
+}
+}
+        </style>
+
+    </head>
+    <body>
+       
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <a class="navbar-brand" href="#"><img src="{% static 'assets/logodash.png' %}" width="60" height="30"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/stu_dashboard">Home<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/ava_company">Search Jobs</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/skills">Skills</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/reccm">Courses</a>
+                </li>
+            </ul>
+            <div class="form-inline">
+                <a class="nav-link"  style="color:white" href="/stu_noti"> <i class="fas fa-bell" style="font-size: 25px;color: white;"></i></a>
+                <a class="nav-link"  style="color:white" href="/stu_pro"><i class="fas fa-user-circle" style="font-size: 25px;color: white;"></i></a>
+                <a class="nav-link"  style="color:white" href="/"><i class="fas fa-sign-out-alt"  style="font-size: 25px;color: white;"></i></a>
+              </div>
+        </div>
+    </nav>
+
+<main>
+<center><h1 class="pt-4">User Details</h1></center>
+<br>
+<form action="getuser" method="POST">
+    {% csrf_token %}
+<center>
+    
+<div class="row">
+    <div class="col">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Basic Info</h5>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Date Of Birth</label>
+                    <input type="date" class="form-control" id="exampleInputEmail1" name="dob" aria-describedby="emailHelp">
+                  </div>
+      
+                  
+                <div class="form-group">
+                    <label for="exampleInputEmail1">College Name</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" name="cname" aria-describedby="emailHelp" placeholder="Enter your College name">
+                  </div>
+      
+                
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Department</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" name="dept" aria-describedby="emailHelp" placeholder="Enter your Department">
+                  </div>
+      
+                  
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Semester</label>
+                    <input type="number" class="form-control" id="exampleInputEmail1" name="currsem" aria-describedby="emailHelp" placeholder="Enter Current Semester">
+                  </div>
+                
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Year Of Joining</label>
+                    <input type="number" class="form-control" id="exampleInputEmail1" name="yoj" aria-describedby="emailHelp" placeholder="yyyy">
+                  </div>
+                </div>
+           </div>
+           <br>
+    </div>
+    <div class="col">
+        <div class="card" class="skill">
+            <div class="card-body">
+                <h5 class="card-title">Skills</h5>
+                <div class="form-group">
+                    <input type="checkbox"  name="checks[]" id="inp7" value="c++">
+                    <label for="#inp7">C++</label>
+                    <input type="checkbox"  name="checks[]" id="inp8" value="java">
+                    <label for="#inp8">Java</label>
+                    <input type="checkbox"  name="checks[]" id="inp7" value="c">
+                    <label for="#inp7">C</label>
+                    
+                    
+                    
+                    <input type="checkbox"  name="checks[]" id="inp9" value="python">
+                    <label for="#inp9">Python</label> 
+                    <input type="checkbox"  name="checks[]" id="inp10" value="swift">
+                    <label for="#inp10">Swift</label> 
+                    <input type="checkbox"  name="checks[]" id="inp11" value="go">
+                    <label for="#inp11">GO</label>
+                    
+                    
+                    <input type="checkbox"  name="checks[]" id="inp12" value="r">
+                    <label for="#inp12">R</label> 
+                    <input type="checkbox"  name="checks[]" id="inp13" value="c#">
+                    <label for="#inp13">C#</label>   
+                    <input type="checkbox"  name="checks[]" id="inp14" value="html">
+                    <label for="#inp14">Html</label> 
+                    
+                    
+                    <input type="checkbox"  name="checks[]" id="inp15" value="css">
+                    <label for="#inp15">Css</label> 
+                    <input type="checkbox"  name="checks[]" id="inp16" value="javascript">
+                    <label for="#inp16">Javascript</label> 
+                    <input type="checkbox"  name="checks[]" id="inp17" value="php">
+                    <label for="#inp17">PHP</label> 
+                    
+                    
+                    <input type="checkbox"  name="checks[]" id="inp18" value="vb">
+                    <label for="#inp18">VB.NET</label> 
+                    <input type="checkbox"  name="checks[]" id="inp19" value="sql">
+                    <label for="#inp19">SQL</label> 
+                    <input type="checkbox"  name="checks[]" id="inp20" value="visual basic">
+                    <label for="#inp20">Visual Basic</label>
+                    
+                    
+                    <input type="checkbox"  name="checks[]" id="inp21" value="perl">
+                    <label for="#inp21">Perl</label> 
+                    <input type="checkbox"  name="checks[]" id="inp22" value="typescript">
+                    <label for="#inp22">TypeScript</label> 
+                    <input type="checkbox"  name="checks[]" id="inp23" value="matlab">
+                        <label for="#inp23">Matlab</label> 
+                    
+                    
+                        <input type="checkbox" name="checks[]" id="inp24" value="assembly">
+                        <label for="#inp24">Assembly</label> 
+                        <input type="checkbox"  name="checks[]" id="inp25" value="objective c">
+                        <label for="#inp25">Objective C</label> 
+                        <input type="checkbox"  name="checks[]" id="inp26" value="ruby">
+                        <label for="#inp26">Ruby</label> 
+            </div>
+            </div>
+        </div>
+        <br>
+    </div>
+
+    <div class="col">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Area of interest</h5>
+                <div class="form-group">
+                    <input type="checkbox"  name="checks2[]" id="inp27" value="DSA">
+                    <label for="#inp27">DataStructures</label><br>
+                    <input type="checkbox"  name="checks2[]" id="inp28" value="Algorithm">
+                    <label for="#inp28">Algorithms</label><br>
+                    <input type="checkbox"  name="checks2[]" id="inp29" value="OOps">
+                    <label for="#inp29">OOPS</label><br>
+                    <input type="checkbox"  name="checks2[]" id="inp30" value="AI">
+                    <label for="#inp30">Artificial Intelligence</label><br>
+                    <input type="checkbox"  name="checks2[]" id="inp31" value="Deep Learning">
+                    <label for="#inp31">Deep Learning</label><br>
+                    <input type="checkbox"  name="checks2[]" id="inp32" value="Machine Learning">
+                    <label for="#inp32">Machine Learning</label><br>
+                    <input type="checkbox"  name="checks2[]" id="inp33" value="Cloud Computing">
+                    <label for="#inp33">Cloud Computing</label><br>
+                    <input type="checkbox"  name="checks2[]" id="inp34" value="DB">
+                    <label for="#inp34">Database Systems</label><br>
+                    <input type="checkbox"  name="checks2[]" id="inp35" value="Network">
+                    <label for="#inp35">Computer Networks</label><br>
+                    <input type="checkbox"  name="checks2[]" id="inp36" value="Os">
+                    <label for="#inp36">Operating Systems</label><br>
+                    <input type="checkbox"  name="checks2[]" id="inp37" value="Img">
+                    <label for="#inp37">Image Processing</label><br>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</center>
+<br>
+<center>
+    <button class="btn btn-primary" type="submit">Submit</button>
+</center>
+</form>
+<br>
+</main>
+
+
+</body>
+</html>

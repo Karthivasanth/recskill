@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body style="background-color: pink">        
+        <script src="" async defer></script>
+        <form action="check" method="POST">
+            {% csrf_token %}
+            UserName:<input type="text" name="name" placeholder="username">
+            <br><br>
+            Password:<input type="password" name="pass" placeholder="password">
+            <br><input type="submit">
+    </body>
+</html>

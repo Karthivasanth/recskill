@@ -1,0 +1,167 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,height=device-height, initial-scale=1">
+        <title>Rec_Skill_Your_Skills</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        <script src="https://kit.fontawesome.com/f52e354d3a.js" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+        <style>
+            #droplist {
+                background-color: rgb(255, 255, 255);
+            }
+            #mainsearch:hover 
+            {
+                background-color: darkblue;
+                color: white;
+            }
+            #mainsearch{
+                background-color: rgb(255, 255, 255);
+                 color: rgb(5, 155, 255);
+            }
+            #mainsearchbox{
+                background-color: rgb(255, 255, 255);
+                color: rgb(51, 51, 51);
+            }
+            nav{
+                padding: none;
+            }
+            .nav-link:hover{
+                transform: scale(1.1);
+                box-shadow: 5px 5px 6px solid rgba(0,0,0,0.7);
+                color: black;
+                transition: .5s ease-in-out;
+                }
+                .navbar-nav .nav-item:hover .nav-link {
+                       color: rgb(2, 2, 2);
+                    }
+            .navbar-brand > img:hover{
+                    transform: scale(1.2);
+                    box-shadow: 5px 5px 6px solid rgba(0,0,0,0.7);
+                    transition: .5s ease-in-out;
+             }   
+             .l-col > .card{
+                 margin-top: 4%;
+                 margin-left: 45%;
+                 margin-right: 5%;
+                 background-color: rgb(236, 236, 236);
+                 border-radius: 15px;
+             }
+             .r-col{
+                margin-top: 4%;
+             }
+             .r-col > .card{
+                 margin-right: 45%;
+                 background-color: rgb(236, 236, 236);
+             }
+             .container{
+                 display: grid;
+                 gap : 1.5rem;
+                 grid-template-columns: repeat(auto-fit,minmax(60px,1fr));
+             }
+             .gridz{
+                display: grid;
+                 grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+             }
+@media screen and (max-width: 767px){
+         .l-col > .card{
+                 margin-top: 2%;
+                 margin-left: 2%;
+                 margin-right: 2%;
+                 padding: none;
+             }
+             .r-col > .card{
+               margin-left: 2%;
+               margin-right: 2%;
+           }
+           .r-col{
+               text-align: center;
+           }
+           }
+        </style>
+
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <a class="navbar-brand" href="#"><img src="{% static 'assets/logodash.png' %}" width="60" height="30"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/stu_dashboard">Home<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/ava_company">Search Jobs</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/skills">Skills</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/reccm">Courses</a>
+                </li>
+            </ul>
+            <div class="form-inline">
+                <a class="nav-link"  style="color:white" href="/stu_noti"> <i class="fas fa-bell" style="font-size: 25px;color: white;"></i></a>
+                <a class="nav-link"  style="color:white" href="/stu_pro"><i class="fas fa-user-circle" style="font-size: 25px;color: white;"></i></a>
+                <a class="nav-link"  style="color:white" href="/"><i class="fas fa-sign-out-alt"  style="font-size: 25px;color: white;"></i></a>
+              </div>
+        </div>
+    </nav>
+
+
+
+
+
+<main>
+    <center><h2 style="margin-top: 2%;">Skills</h2></center>
+    <div class="gridz">
+        <span class="l-col">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Your Skills</h5>
+                    <div class="container">
+                        {% for skill in skar %}
+                        <span class="badge badge-pill badge-primary" id="badge" style="padding: 5%;width: 70px;">{{skill}}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Trending Skills</h5>
+                    <div class="container">
+                        <span class="badge badge-pill badge-primary" id="badge" style="padding: 10%;width: 60px;">Open Cv</span>
+                        <span class="badge badge-pill badge-primary" id="badge" style="padding: 10%;width: 60px;">HTML</span>
+                        <span class="badge badge-pill badge-primary" id="badge" style="padding: 10%;width: 60px;">PHP</span>
+                        <span class="badge badge-pill badge-primary" id="badge" style="padding: 10%;width: 60px;">C#</span>
+                    </div>
+                </div>
+            </div>
+        </span>
+        <span class="r-col">
+            <h4>Improve Your Skills</h4>
+            {% for cr in crs %}
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{cr.C_title}}</h5>
+                    <p class="card-text">{{cr.C_desp}}<br><a href="{{cr.link}}">learn More</a></p>
+                </div>
+            </div>
+            <br>
+            {% endfor %}
+            <a href="/reccm" style="margin-left: 2%;">Discover More>></a>
+        </span>
+    </div>
+</main>
+
+
+
+</body>
+</html>
